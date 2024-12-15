@@ -18,5 +18,20 @@ public class Main {
         
         // Menampilkan ukuran antrean
         System.out.println("Ukuran antrean: " + rentalQueue.getSize());
+        LinkedList pegawai_rental1 = new LinkedList();
+        pegawai_rental1.add_last("nama_pegawai", "posisi");
+        pegawai_rental1.add_last("nama_pegawai2", "posisi2");
+        pegawai_rental1.add_last("nama_pegawai3", "posisi3");
+        pegawai_rental1.add_last("nama_pegawai4", "posisi4");
+        pegawai_rental1.display();
+
+        LinkedList pegawai_rental2 = new LinkedList();
+        pegawai_rental2.add_last("nama_pegawai", "posisi");
+        pegawai_rental2.add_last("nama_pegawai2", "posisi2");
+        pegawai_rental2.add_last("nama_pegawai3", "posisi3");
+        pegawai_rental2.add_last("nama_pegawai4", "posisi4");
+        pegawai_rental2.display();
+
+        Tree tree = new Tree();
     }
 }
