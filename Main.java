@@ -116,8 +116,9 @@ public class Main {
             System.out.println("\n---- Menu Data Pegawai Rental ----");
             System.out.println("1. Tambahkan Data Pegawai di Akhir List");
             System.out.println("2. Tampilkan Seluruh Data Pegawai");
-            System.out.println("3. Kembali ke Menu Utama");
-            System.out.println("4. Edit Data Pegawai");
+            System.out.println("3. Tampilkan Pegawai Dengan Gaji > 10000000");
+            System.out.println("4. Kembali ke Menu Utama");
+            System.out.println("5. Edit Data Pegawai");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
@@ -128,16 +129,23 @@ public class Main {
                     String nama = scanner.nextLine();
                     System.out.print("Masukkan posisi pegawai: ");
                     String posisi = scanner.nextLine();
-                    list.add_last(nama, posisi);
+                     System.out.print("Masukkan gaji pegawai: ");
+                    String posisi = scanner.nextLine();
+                    list.add_last(nama, posisi, gaji);
                     System.out.println("Data pegawai berhasil ditambahkan.");
                     break;
                 case 2:
                     list.display();
                     break;
                 case 3:
+                     System.out.print("Masukkan nilai gaji threshold: ");
+                     int threshold = scanner.nextInt();
+                     list.displayEmployeesWithSalaryGreaterThan(threshold);
+                     break;
+                case 4:
                     System.out.println("Kembali ke menu utama.");
                     break;
-                case 4:
+                case 5:
                     System.out.print("Masukkan nama pegawai yang ingin diedit: ");
                     String nm = scanner.nextLine();
                     NodeLinked ketemu = list.searchPegawai(nm);
