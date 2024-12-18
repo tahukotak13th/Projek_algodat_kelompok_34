@@ -115,8 +115,8 @@ public class Main {
             System.out.println("\n---- Menu Data Pegawai Rental ----");
             System.out.println("1. Tambahkan Data Pegawai di Akhir List");
             System.out.println("2. Tampilkan Seluruh Data Pegawai");
-            System.out.println("3. Edit Data Pegawai");
-            System.out.println("4. Kembali ke Menu Utama");
+            System.out.println("3. Kembali ke Menu Utama");
+            System.out.println("4. Edit Data Pegawai");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
