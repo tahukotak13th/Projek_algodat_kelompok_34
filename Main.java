@@ -7,9 +7,10 @@ public class Main {
         Tree tree = new Tree();
         
         // Menambahkan beberapa orang ke antrean
-        rentalQueue.enqueue("Alice", "1");
-        rentalQueue.enqueue("Bob", "2");
-        rentalQueue.enqueue("Charlie", "3");
+        rentalQueue.enqueue("Yayan", "1");
+        rentalQueue.enqueue("Karin", "2");
+        rentalQueue.enqueue("Abiyu", "3");
+        rentalQueue.enqueue("Anggi", "4");
         
         // Menampilkan antrean
         rentalQueue.displayQueue();
