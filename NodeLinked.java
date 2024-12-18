@@ -5,9 +5,9 @@ public class NodeLinked{
     NodeLinked next;
     NodeLinked prev;
 
-    public NodeLinked(String nama_pegawai,String posisi){
-        this.nama_pegawai=nama_pegawai;
-        this.posisi=posisi;
+    public NodeLinked(String nama_pegawai,String posisi, int gaji){
+        this.nama_pegawai = nama_pegawai;
+        this.posisi = posisi;
         this.gaji = gaji;
         this.next = null;
         this.prev = null;

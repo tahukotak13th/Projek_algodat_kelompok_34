@@ -24,17 +24,17 @@ public class Main {
         // Menampilkan ukuran antrean
         System.out.println("Ukuran antrean: " + rentalQueue.getSize());
         LinkedList pegawai_rental1 = new LinkedList();
-        pegawai_rental1.add_last("nama_pegawai", "posisi");
-        pegawai_rental1.add_last("nama_pegawai2", "posisi2");
-        pegawai_rental1.add_last("nama_pegawai3", "posisi3");
-        pegawai_rental1.add_last("nama_pegawai4", "posisi4");
+        pegawai_rental1.add_last("Pegawai1", "posisi1", 4000000);
+        pegawai_rental1.add_last("Pegawai2", "posisi2", 10000000);
+        pegawai_rental1.add_last("Pegawai3", "posisi3", 5000000);
+        pegawai_rental1.add_last("Pegawai4", "posisi4", 7000000);
         pegawai_rental1.display();
 
         LinkedList pegawai_rental2 = new LinkedList();
-        pegawai_rental2.add_last("nama_pegawai", "posisi");
-        pegawai_rental2.add_last("nama_pegawai2", "posisi2");
-        pegawai_rental2.add_last("nama_pegawai3", "posisi3");
-        pegawai_rental2.add_last("nama_pegawai4", "posisi4");
+        pegawai_rental2.add_last("nama_pegawai1", "posisi1", 3000000);
+        pegawai_rental2.add_last("nama_pegawai2", "posisi2", 4000000);
+        pegawai_rental2.add_last("nama_pegawai3", "posisi3", 2000000);
+        pegawai_rental2.add_last("nama_pegawai4", "posisi4", 7000000);
         pegawai_rental2.display();
 
 
@@ -116,7 +116,7 @@ public class Main {
             System.out.println("\n---- Menu Data Pegawai Rental ----");
             System.out.println("1. Tambahkan Data Pegawai di Akhir List");
             System.out.println("2. Tampilkan Seluruh Data Pegawai");
-            System.out.println("3. Tampilkan Pegawai Dengan Gaji > 10000000");
+            System.out.println("3. Tampilkan Pegawai Dengan Gaji Diatas 10 Juta");
             System.out.println("4. Kembali ke Menu Utama");
             System.out.println("5. Edit Data Pegawai");
             System.out.print("Masukkan pilihan Anda: ");
@@ -129,10 +129,10 @@ public class Main {
                     String nama = scanner.nextLine();
                     System.out.print("Masukkan posisi pegawai: ");
                     String posisi = scanner.nextLine();
-                     System.out.print("Masukkan gaji pegawai: ");
-                    String posisi = scanner.nextLine();
+                    System.out.print("Masukkan gaji pegawai: ");
+                    int gaji = scanner.nextInt();
                     list.add_last(nama, posisi, gaji);
-                    System.out.println("Data pegawai berhasil ditambahkan.");
+                    System.out.println("Data pegawai berhasil ditambahkan: ");
                     break;
                 case 2:
                     list.display();
@@ -140,7 +140,7 @@ public class Main {
                 case 3:
                      System.out.print("Masukkan nilai gaji threshold: ");
                      int threshold = scanner.nextInt();
-                     list.displayEmployeesWithSalaryGreaterThan(threshold);
+                     list.displayPegawaiDenganGajiLebihBesarDari(threshold);
                      break;
                 case 4:
                     System.out.println("Kembali ke menu utama.");

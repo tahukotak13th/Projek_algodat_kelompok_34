@@ -33,7 +33,7 @@ public class LinkedList {
         System.out.println("");
         while(temp!=null){
             
-            System.out.println("Nama : " + temp.nama_pegawai + " Posisi: " + temp.posisi);
+            System.out.println("Nama : " + temp.nama_pegawai + " Posisi: " + temp.posisi + "Gaji: " + temp.gaji);
             temp = temp.next;
         }
     }
@@ -54,6 +54,9 @@ public class LinkedList {
             node.nama_pegawai = dataBaru;
         }
         if(atr.equals("posisi")){
+            node.posisi = dataBaru;
+        }
+        if(atr.equals("gaji")){
             node.posisi = dataBaru;
         }
     }
