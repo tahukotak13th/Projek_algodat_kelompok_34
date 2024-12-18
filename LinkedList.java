@@ -2,8 +2,8 @@ public class LinkedList {
     NodeLinked head;
     NodeLinked tail;
 
-    public void add_last(String nama_pegawai,String posisi){
-        NodeLinked newnode = new NodeLinked(nama_pegawai, posisi);
+    public void add_last(String nama_pegawai,String posisi, int gaji){
+        NodeLinked newnode = new NodeLinked(nama_pegawai, posisi, gaji);
         if(head==null){
             head = newnode;
             tail = newnode;
