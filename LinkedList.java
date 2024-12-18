@@ -57,5 +57,14 @@ public class LinkedList {
             node.posisi = dataBaru;
         }
     }
-
+  public void displayPegawaiDenganGajiLebihBesarDari(int batasMinimum) {
+        NodeLinked temp = head;
+        System.out.println("Pegawai dengan gaji lebih dari " + batasMinimum + ":");
+        while (temp != null) {
+           if (temp.gaji > batasMinimum) {
+               System.out.println("Nama: " + temp.nama_pegawai + ", Posisi: " + temp.posisi + ", Gaji: " + temp.gaji);
+        }
+        temp = temp.next;
+    }
+}
 }
