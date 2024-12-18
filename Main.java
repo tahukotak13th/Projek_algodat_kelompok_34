@@ -115,7 +115,8 @@ public class Main {
             System.out.println("\n---- Menu Data Pegawai Rental ----");
             System.out.println("1. Tambahkan Data Pegawai di Akhir List");
             System.out.println("2. Tampilkan Seluruh Data Pegawai");
-            System.out.println("3. Kembali ke Menu Utama");
+            System.out.println("3. Edit Data Pegawai");
+            System.out.println("4. Kembali ke Menu Utama");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
@@ -134,6 +135,20 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Kembali ke menu utama.");
+                    break;
+                case 4:
+                    System.out.print("Masukkan nama pegawai yang ingin diedit: ");
+                    String nm = scanner.nextLine();
+                    NodeLinked ketemu = list.searchPegawai(nm);
+                    if(ketemu == null){
+                        System.out.println("Tidak ada pegawai dengan nama itu");
+                        break;
+                    }
+                    System.out.print("Atribut apa yang mau diedit (nama, posisi): ");
+                    String atribut = scanner.nextLine();
+                    System.out.print("Masukkan isi atribut yang baru: ");
+                    String newAtr = scanner.nextLine();
+                    list.editData(ketemu, atribut, newAtr);
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");

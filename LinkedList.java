@@ -38,5 +38,24 @@ public class LinkedList {
         }
     }
     
+    public NodeLinked searchPegawai(String nama){
+        NodeLinked curr = head;
+        while(curr!=null){
+            if(curr.nama_pegawai.equals(nama)){
+                return curr;
+            }
+            curr = curr.next;
+        }
+        return null;
+    }
+
+    public void editData(NodeLinked node, String atr, String dataBaru){
+        if(atr.equals("nama")){
+            node.nama_pegawai = dataBaru;
+        }
+        if(atr.equals("posisi")){
+            node.posisi = dataBaru;
+        }
+    }
 
 }
