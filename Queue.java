@@ -10,8 +10,9 @@ public class Queue {
     }
 
     // Menambahkan orang ke antrean
-    public void enqueue(String nama_orang, String posisi) {
-        Node newNode = new Node(nama_orang, posisi);
+    public void enqueue(String nama_orang) {
+        Node newNode = new Node(nama_orang);
+        // Tukar data antar node
         if (rear == null) {
             // Jika antrean kosong
             front = rear = newNode;
@@ -43,6 +44,7 @@ public class Queue {
 
     // Menampilkan antrean
     public void displayQueue() {
+        int antrean=1;
         if (front == null) {
             System.out.println("Antrean kosong.");
             return;
@@ -50,7 +52,8 @@ public class Queue {
         Node current = front;
         System.out.println("Antrean saat ini:");
         while (current != null) {
-            System.out.println("Nama: " + current.nama_orang + ", Posisi: " + current.posisi);
+            System.out.println("Nama: " + current.nama_orang + ", Posisi: " + antrean);
+            antrean++;
             current = current.next;
         }
     }

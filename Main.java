@@ -7,10 +7,10 @@ public class Main {
         Tree tree = new Tree();
         
         // Menambahkan beberapa orang ke antrean
-        rentalQueue.enqueue("Yayan", "1");
-        rentalQueue.enqueue("Karin", "2");
-        rentalQueue.enqueue("Abiyu", "3");
-        rentalQueue.enqueue("Anggi", "4");
+        rentalQueue.enqueue("Yayan");
+        rentalQueue.enqueue("Karin");
+        rentalQueue.enqueue("Abiyu");
+        rentalQueue.enqueue("Anggi");
         
         // Menampilkan antrean
         rentalQueue.displayQueue();
@@ -73,7 +73,7 @@ public class Main {
         do {
             System.out.println("\n---- Menu Antrean Rental ----");
             System.out.println("1. Tambahkan Orang ke Antrean");
-            System.out.println("2. Hapus Orang dari Antrean");
+            System.out.println("2. Proses Antrean");
             System.out.println("3. Tampilkan Antrean");
             System.out.println("4. Tampilkan Ukuran Antrean");
             System.out.println("5. Kembali ke Menu Utama");
@@ -85,14 +85,12 @@ public class Main {
                 case 1:
                     System.out.print("Masukkan nama: ");
                     String nama = scanner.nextLine();
-                    System.out.print("Masukkan nomor ID: ");
-                    String id = scanner.nextLine();
-                    queue.enqueue(nama, id);
-                    System.out.println("Orang berhasil ditambahkan ke antrean.");
+                    queue.enqueue(nama);
+                    System.out.println(nama+" berhasil ditambahkan ke antrean.");
                     break;
                 case 2:
                     queue.dequeue();
-                    System.out.println("Orang pertama dihapus dari antrean.");
+                    System.out.println("Antrean telah diproses.");
                     break;
                 case 3:
                     queue.displayQueue();
