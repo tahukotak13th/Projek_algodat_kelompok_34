@@ -1,6 +1,14 @@
 public class LinkedList {
+    String tempat;
+    LinkedList next;
     NodeLinked head;
     NodeLinked tail;
+
+    public LinkedList(String tempat){
+        this.tempat = tempat;
+        this.head = null;
+        this.next = null;
+    }
 
     public void add_last(String nama_pegawai, String posisi, int gaji) {
         NodeLinked newnode = new NodeLinked(nama_pegawai, posisi, gaji);
@@ -13,31 +21,59 @@ public class LinkedList {
             tail = newnode;
         }
     }
-
-    public void delete_mid(String nama_pegawai) {
-        if (head == null) {
-            System.out.println("tidak ada pegawai");
-        } else {
-            NodeLinked temp = head;
-            while (!temp.nama_pegawai.equals(nama_pegawai)) {
-                temp = temp.next;
-            }
-            temp.prev.next = temp.next;
-            temp.next.prev = temp.prev;
-            temp.prev = null;
-            temp.next = null;
-        }
-    }
-
     public void display() {
         NodeLinked temp = head;
-        System.out.println("");
         while (temp != null) {
 
-            System.out.println("Nama : " + temp.nama_pegawai + " Posisi: " + temp.posisi + "Gaji: " + temp.gaji);
+            System.out.println("Nama : " + temp.nama_pegawai + " Posisi: " + temp.posisi + " Gaji: " + temp.gaji);
             temp = temp.next;
         }
     }
+    
+
+    public void delete_mid(String nama_pegawai) {
+        if (head == null) {
+            System.out.println("List kosong");
+            return;
+        }
+    
+        NodeLinked temp = head;
+        // Traverse the list to find the node to delete
+        while (temp != null && !temp.nama_pegawai.equals(nama_pegawai)) {
+            temp = temp.next;
+        }
+    
+        if (temp == null) {
+            System.out.println("Pegawai dengan nama " + nama_pegawai + " tidak ditemukan");
+            return;
+        }
+    
+        // If node is the first one
+        if (temp == head) {
+            head = temp.next;
+            if (head != null) {
+                head.prev = null;
+            }
+        }
+        // If node is the last one
+        else if (temp == tail) {
+            tail = temp.prev;
+            if (tail != null) {
+                tail.next = null;
+            }
+        }
+        // If node is in the middle
+        else {
+            temp.prev.next = temp.next;
+            temp.next.prev = temp.prev;
+        }
+    
+        System.out.println(temp.nama_pegawai + " berhasil dihapus");
+        temp.prev = null;
+        temp.next = null;
+    }
+    
+
 
     public NodeLinked searchPegawai(String nama) {
         NodeLinked curr = head;

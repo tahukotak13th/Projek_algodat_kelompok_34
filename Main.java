@@ -5,42 +5,23 @@ public class Main {
         Queue rentalQueue = new Queue();
         Scanner scanner = new Scanner(System.in);
         Tree tree = new Tree();
-        
-        // Menambahkan beberapa orang ke antrean
-        rentalQueue.enqueue("Yayan");
-        rentalQueue.enqueue("Karin");
-        rentalQueue.enqueue("Abiyu");
-        rentalQueue.enqueue("Anggi");
-        
-        // Menampilkan antrean
-        rentalQueue.displayQueue();
-        
-        // Menghapus orang dari antrean
-        rentalQueue.dequeue();
-        
-        // Menampilkan antrean setelah penghapusan
-        rentalQueue.displayQueue();
-        
-        // Menampilkan ukuran antrean
-        System.out.println("Ukuran antrean: " + rentalQueue.getSize());
-        LinkedList pegawai_rental1 = new LinkedList();
-        pegawai_rental1.add_last("Pegawai1", "posisi1", 4000000);
-        pegawai_rental1.add_last("Pegawai2", "posisi2", 10000000);
-        pegawai_rental1.add_last("Pegawai3", "posisi3", 5000000);
-        pegawai_rental1.add_last("Pegawai4", "posisi4", 7000000);
-        pegawai_rental1.display();
+        NestedLinked list_pegawai = new NestedLinked();
 
-        LinkedList pegawai_rental2 = new LinkedList();
-        pegawai_rental2.add_last("nama_pegawai1", "posisi1", 3000000);
-        pegawai_rental2.add_last("nama_pegawai2", "posisi2", 4000000);
-        pegawai_rental2.add_last("nama_pegawai3", "posisi3", 2000000);
-        pegawai_rental2.add_last("nama_pegawai4", "posisi4", 7000000);
-        pegawai_rental2.display();
+        list_pegawai.tambahTempat("rental STRIKE");
 
+        LinkedList rental1 = list_pegawai.cariTempat("rental STRIKE");
+        if (rental1 != null) {
+            rental1.add_last("yayan", "Owner", 100);
+            rental1.add_last("Anggi", "kasir", 100);
+            rental1.add_last("Karina", "penjaga", 100);
+            rental1.add_last("Abiyyu", "penjaga", 100);
+        }
+        tree.insert("rental STRIKE", 5000, rental1);
+        tree.display();
 
         int choice;
         do {
-            System.out.println("========== SISTEM RENTAL ==========");
+            System.out.println("\n========== SISTEM RENTAL ==========");
             System.out.println("1. Kelola Antrean (Queue)");
             System.out.println("2. Kelola Data Pegawai (Linked List)");
             System.out.println("3. Kelola Pohon Data (Tree)");
@@ -53,10 +34,10 @@ public class Main {
                     queueMenu(scanner, rentalQueue);
                     break;
                 case 2:
-                    linkedListMenu(scanner, pegawai_rental1);
+                    NestedLinkedMenu(scanner, list_pegawai);
                     break;
                 case 3:
-                    treeMenu(scanner, tree);
+                    treeMenu(scanner, tree,list_pegawai);
                     break;
                 case 4:
                     System.out.println("Terima kasih! Keluar dari program.");
@@ -86,7 +67,7 @@ public class Main {
                     System.out.print("Masukkan nama: ");
                     String nama = scanner.nextLine();
                     queue.enqueue(nama);
-                    System.out.println(nama+" berhasil ditambahkan ke antrean.");
+                    System.out.println(nama + " berhasil ditambahkan ke antrean.");
                     break;
                 case 2:
                     queue.dequeue();
@@ -107,16 +88,55 @@ public class Main {
         } while (subChoice != 5);
     }
 
-    // Menu Kelola Linked List
-    private static void linkedListMenu(Scanner scanner, LinkedList list) {
+    private static void NestedLinkedMenu(Scanner scanner, NestedLinked list_pegawai) {
         int subChoice;
         do {
             System.out.println("\n---- Menu Data Pegawai Rental ----");
-            System.out.println("1. Tambahkan Data Pegawai di Akhir List");
-            System.out.println("2. Tampilkan Seluruh Data Pegawai");
-            System.out.println("3. Tampilkan Pegawai Dengan Gaji Diatas 10 Juta");
+            System.out.println("1. Pilih Tempat Rental");
+            System.out.println("2. Tambah Tempat rental");
+            System.out.println("3. Tampilkan Seluruh Data Pegawai");
             System.out.println("4. Kembali ke Menu Utama");
-            System.out.println("5. Edit Data Pegawai");
+            System.out.print("Masukkan pilihan Anda: ");
+            subChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (subChoice) {
+                case 1:
+                    System.out.print("Masukkan nama tempat rental: ");
+                    String tempat = scanner.nextLine();
+                    LinkedList rental = list_pegawai.cariTempat(tempat);
+                    if (rental != null) {
+                        linkedListMenu(scanner, rental);
+                    } else {
+                        System.out.println("Tempat rental tidak ditemukan!");
+                    }
+                    break;
+                case 2:
+                    System.out.print("Masukkan nama tempat rental: ");
+                    String tempatbaru = scanner.nextLine();
+                    list_pegawai.tambahTempat(tempatbaru);
+                    break;
+                case 3:
+                    list_pegawai.tampilkanSemua();
+                    break;
+                case 4:
+                    System.out.println("Kembali ke menu utama.");
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        } while (subChoice != 4);
+    }
+
+    private static void linkedListMenu(Scanner scanner, LinkedList list) {
+        int subChoice;
+        do {
+            System.out.println("\n---- Menu Data Pegawai ----");
+            System.out.println("1. Tambah Pegawai");
+            System.out.println("2. Hapus Pegawai");
+            System.out.println("3. Tampilkan Seluruh Pegawai");
+            System.out.println("4. Edit Data Pegawai");
+            System.out.println("5. Kembali ke Menu Sebelumnya");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
@@ -130,59 +150,78 @@ public class Main {
                     System.out.print("Masukkan gaji pegawai: ");
                     int gaji = scanner.nextInt();
                     list.add_last(nama, posisi, gaji);
-                    System.out.println("Data pegawai berhasil ditambahkan: ");
+                    System.out.println("Pegawai berhasil ditambahkan.");
                     break;
                 case 2:
-                    list.display();
+                    System.out.print("Masukkan nama pegawai yang ingin dihapus: ");
+                    String namaHapus = scanner.nextLine();
+                    NodeLinked pegawaidihapus = list.searchPegawai(namaHapus);
+                    if (pegawaidihapus != null) {
+                        list.delete_mid(namaHapus);
+                    } else {
+                        System.out.println("Pegawai tidak ditemukan!");
+                    }
                     break;
                 case 3:
-                     System.out.print("Masukkan nilai gaji threshold: ");
-                     int threshold = scanner.nextInt();
-                     list.displayPegawaiDenganGajiLebihBesarDari(threshold);
-                     break;
+                    list.display();
+                    break;
                 case 4:
-                    System.out.println("Kembali ke menu utama.");
+                    System.out.print("Masukkan nama pegawai yang ingin diedit: ");
+                    String namaEdit = scanner.nextLine();
+                    NodeLinked pegawai = list.searchPegawai(namaEdit);
+                    if (pegawai != null) {
+                        System.out.print("Atribut yang ingin diedit (nama/posisi/gaji): ");
+                        String atribut = scanner.nextLine();
+                        System.out.print("Masukkan nilai baru: ");
+                        String nilaiBaru = scanner.nextLine();
+                        list.editData(pegawai, atribut, nilaiBaru);
+                    } else {
+                        System.out.println("Pegawai tidak ditemukan!");
+                    }
                     break;
                 case 5:
-                    System.out.print("Masukkan nama pegawai yang ingin diedit: ");
-                    String nm = scanner.nextLine();
-                    NodeLinked ketemu = list.searchPegawai(nm);
-                    if(ketemu == null){
-                        System.out.println("Tidak ada pegawai dengan nama itu");
-                        break;
-                    }
-                    System.out.print("Atribut apa yang mau diedit (nama, posisi): ");
-                    String atribut = scanner.nextLine();
-                    System.out.print("Masukkan isi atribut yang baru: ");
-                    String newAtr = scanner.nextLine();
-                    list.editData(ketemu, atribut, newAtr);
+                    System.out.println("Kembali ke menu sebelumnya.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (subChoice != 3);
+        } while (subChoice != 5);
     }
 
     // Menu Kelola Tree
-    private static void treeMenu(Scanner scanner, Tree tree) {
+    private static void treeMenu(Scanner scanner, Tree tree,NestedLinked list_pegawai) {
         int subChoice;
         do {
             System.out.println("\n---- Menu Pohon Data Rental ----");
             System.out.println("1. Tambahkan Node ke Pohon");
-            System.out.println("2. Tampilkan PreOrder Traversal");
-            System.out.println("3. Tampilkan InOrder Traversal");
-            System.out.println("4. Tampilkan PostOrder Traversal");
-            System.out.println("5. Kembali ke Menu Utama");
+            System.out.println("2. Tampilkan InOrder Traversal");
+            System.out.println("3. Kembali Ke menu utama");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
 
             switch (subChoice) {
                 case 1:
+                    System.out.print("Masukkan nama rental: ");
+                    String nama = scanner.nextLine();
+                    System.out.print("Masukkan pendapatan rental: ");
+                    int pendapatan = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Masukkan list pegawai: ");
+                    String namatempat = scanner.nextLine();
+                    LinkedList list = list_pegawai.cariTempat(namatempat);
+                    tree.insert(nama, pendapatan, list);
+                    System.out.println("Pegawai berhasil ditambahkan.");
+                    break;
+                case 2:
+                    tree.display();
+                    break;
+                case 3:
+                    System.out.println("Kembali ke menu sebelumnya.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (subChoice != 5);
+        } while (subChoice != 3);
     }
 }
