@@ -19,15 +19,20 @@ public class Main {
         tree.insert("rental STRIKE", 5000, rental1);
         tree.display();
 
+        
         int choice;
         do {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
             System.out.println("\n========== SISTEM RENTAL ==========");
             System.out.println("1. Kelola Antrean (Queue)");
             System.out.println("2. Kelola Data Pegawai (Linked List)");
             System.out.println("3. Kelola Pohon Data (Tree)");
             System.out.println("4. Keluar");
+            System.out.println("===================================");
             System.out.print("Masukkan pilihan Anda (1-4): ");
             choice = scanner.nextInt();
+            
 
             switch (choice) {
                 case 1:
@@ -51,13 +56,16 @@ public class Main {
     // Menu Kelola Queue
     private static void queueMenu(Scanner scanner, Queue queue) {
         int subChoice;
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         do {
-            System.out.println("\n---- Menu Antrean Rental ----");
+            System.out.println("\n========== MENU ANTRIAN RENTAL ==========");
             System.out.println("1. Tambahkan Orang ke Antrean");
             System.out.println("2. Proses Antrean");
             System.out.println("3. Tampilkan Antrean");
             System.out.println("4. Tampilkan Ukuran Antrean");
             System.out.println("5. Kembali ke Menu Utama");
+            System.out.println("=========================================");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
@@ -90,12 +98,16 @@ public class Main {
 
     private static void NestedLinkedMenu(Scanner scanner, NestedLinked list_pegawai) {
         int subChoice;
+
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         do {
-            System.out.println("\n---- Menu Data Pegawai Rental ----");
+            System.out.println("\n========== MENU DATA RENTAL ==========");
             System.out.println("1. Pilih Tempat Rental");
             System.out.println("2. Tambah Tempat rental");
             System.out.println("3. Tampilkan Seluruh Data Pegawai");
             System.out.println("4. Kembali ke Menu Utama");
+            System.out.println("=======================================");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine();
@@ -130,13 +142,16 @@ public class Main {
 
     private static void linkedListMenu(Scanner scanner, LinkedList list) {
         int subChoice;
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         do {
-            System.out.println("\n---- Menu Data Pegawai ----");
+            System.out.println("\n========== MENU DATA PEGAWAI ==========");
             System.out.println("1. Tambah Pegawai");
             System.out.println("2. Hapus Pegawai");
             System.out.println("3. Tampilkan Seluruh Pegawai");
             System.out.println("4. Edit Data Pegawai");
             System.out.println("5. Kembali ke Menu Sebelumnya");
+            System.out.println("=======================================");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
@@ -191,11 +206,14 @@ public class Main {
     // Menu Kelola Tree
     private static void treeMenu(Scanner scanner, Tree tree,NestedLinked list_pegawai) {
         int subChoice;
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         do {
-            System.out.println("\n---- Menu Pohon Data Rental ----");
+            System.out.println("\n========== HIERARKI RENTAL ==========");
             System.out.println("1. Tambahkan Node ke Pohon");
             System.out.println("2. Tampilkan InOrder Traversal");
             System.out.println("3. Kembali Ke menu utama");
+            System.out.println("=====================================");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer input
