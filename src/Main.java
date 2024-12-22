@@ -11,10 +11,10 @@ public class Main {
 
         LinkedList rental1 = list_pegawai.cariTempat("rental STRIKE");
         if (rental1 != null) {
-            rental1.add_last("yayan", "Owner", 100);
-            rental1.add_last("Anggi", "kasir", 100);
-            rental1.add_last("Karina", "penjaga", 100);
-            rental1.add_last("Abiyyu", "penjaga", 100);
+            rental1.add_last("yayan", "Owner", 1000);
+            rental1.add_last("Anggi", "kasir", 900);
+            rental1.add_last("Karina", "penjaga", 800);
+            rental1.add_last("Abiyyu", "penjaga", 700);
         }
         tree.insert("rental STRIKE", 5000, rental1);
         tree.display();
@@ -150,7 +150,9 @@ public class Main {
             System.out.println("2. Hapus Pegawai");
             System.out.println("3. Tampilkan Seluruh Pegawai");
             System.out.println("4. Edit Data Pegawai");
-            System.out.println("5. Kembali ke Menu Sebelumnya");
+            System.out.println("5. Search Berdasarkan Gaji");
+            System.out.println("6. Sorting");
+            System.out.println("7. Kembali ke Menu Sebelumnya");
             System.out.println("=======================================");
             System.out.print("Masukkan pilihan Anda: ");
             subChoice = scanner.nextInt();
@@ -195,12 +197,21 @@ public class Main {
                     }
                     break;
                 case 5:
+                    System.out.println("Masukkan Minimum Gaji yang diinginkan: ");
+                    int gaji1 = scanner.nextInt();
+                    list.displayPegawaiDenganGajiLebihBesarDari(gaji1);
+                    break;
+                case 6:
+                    list.bubblesorting();
+                    list.display();
+                    break;
+                case 7:
                     System.out.println("Kembali ke menu sebelumnya.");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (subChoice != 5);
+        } while (subChoice != 7);
     }
 
     // Menu Kelola Tree
